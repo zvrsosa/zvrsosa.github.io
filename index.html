@@ -1,66 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Zavier Sosa Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <img src="images/placeholder.webp" alt="Logo" class="logo">
+      
+        <!-- Desktop Menu -->
+        <div class="desktop-menu">
+          <nav class="menu">
+            <a href="#" id="portfolio-link">Portfolio</a>
+            <a href="#" id="resume-link">Resume</a>
+            <a href="#" id="contact-link">Contact</a>
+          </nav>
+        </div>
+      
+        <!-- Mobile Menu -->
+        <div class="mobile-menu">
+          <button class="hamburger" id="hamburger-btn">
+            ☰
+          </button>
+          <div class="mobile-dropdown" id="mobile-dropdown" style="display: none;">
+            <a href="#" id="mobile-portfolio-link">Portfolio</a>
+            <a href="#" id="mobile-resume-link">Resume</a>
+            <a href="#" id="mobile-contact-link">Contact</a>
+          </div>
+        </div>
+          <!-- Copyright (Desktop only) -->
+        <div class="copyright"><p>&copy; Zavier Sosa</p></div>
+        <div class="socialmedia" id="socialmediaBtn">
+            
+        </div>
+      </div>      
 
+    <!-- Main Content -->
     <div class="content">
-        <section id="about" class="section">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Hi, I’m Zavier Sosa, a 3D Artist. Check out my work below!</p>
-        </section>
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="section" style="display: none;">
+        <h2>Portfolio</h2>
+        <div class="gallery">
+          <div class="gallery-box" id="3d-models">
+            <h3>3D Models</h3>
+          </div>
+          <div class="gallery-box" id="enviroment-designs">
+            <h3>Environment Designs</h3>
+          </div>
+          <div class="gallery-box" id="illustrations">
+            <h3>Illustrations</h3>
+          </div>
+        </div>
+        <div id="portfolio-content">
+        </div>
+      </section>
 
-        <section id="portfolio" class="section">
-            <h2>My Work</h2>
-            <div class="gallery">
-                <img src="project1.jpg" alt="Project 1">
-                <img src="project2.jpg" alt="Project 2">
-                <img src="project3.jpg" alt="Project 3">
-            </div>
-        </section>
-
-        <section id="contact" class="section">
-            <!-- Social Media Icons by NiftyButtons https://niftybuttons.com --><div style="display: flex; flex-wrap:wrap; align-items: center; justify-content: center;"><a href="https://www.tiktok.com/@zvrsosa" target="_blank" rel="noopener noreferrer" style="text-decoration:none;border:0;width:36px;height:36px;padding:0;margin:3px;color:#11CBE9;"><svg class="niftybutton-tiktok" style="display:block;fill:currentColor" data-donate="true" data-tag="tic" data-name="TikTok" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><title>TikTok social icon</title>
-  <path d="M 386.160156 141.550781 C 383.457031 140.15625 380.832031 138.625 378.285156 136.964844 C 370.878906 132.070312 364.085938 126.300781 358.058594 119.785156 C 342.976562 102.523438 337.339844 85.015625 335.265625 72.757812 L 335.351562 72.757812 C 333.617188 62.582031 334.332031 56 334.441406 56 L 265.742188 56 L 265.742188 321.648438 C 265.742188 325.214844 265.742188 328.742188 265.589844 332.226562 C 265.589844 332.660156 265.550781 333.058594 265.523438 333.523438 C 265.523438 333.714844 265.523438 333.917969 265.484375 334.117188 C 265.484375 334.167969 265.484375 334.214844 265.484375 334.265625 C 264.011719 353.621094 253.011719 370.976562 236.132812 380.566406 C 227.472656 385.496094 217.675781 388.078125 207.707031 388.066406 C 175.699219 388.066406 149.757812 361.964844 149.757812 329.734375 C 149.757812 297.5 175.699219 271.398438 207.707031 271.398438 C 213.765625 271.394531 219.789062 272.347656 225.550781 274.226562 L 225.632812 204.273438 C 190.277344 199.707031 154.621094 210.136719 127.300781 233.042969 C 115.457031 243.328125 105.503906 255.605469 97.882812 269.316406 C 94.984375 274.316406 84.042969 294.410156 82.714844 327.015625 C 81.882812 345.523438 87.441406 364.699219 90.089844 372.625 L 90.089844 372.792969 C 91.757812 377.457031 98.214844 393.382812 108.742188 406.808594 C 117.230469 417.578125 127.253906 427.035156 138.5 434.882812 L 138.5 434.714844 L 138.667969 434.882812 C 171.925781 457.484375 208.800781 456 208.800781 456 C 215.183594 455.742188 236.566406 456 260.851562 444.492188 C 287.785156 431.734375 303.117188 412.726562 303.117188 412.726562 C 312.914062 401.367188 320.703125 388.425781 326.148438 374.449219 C 332.367188 358.109375 334.441406 338.507812 334.441406 330.675781 L 334.441406 189.742188 C 335.273438 190.242188 346.375 197.582031 346.375 197.582031 C 346.375 197.582031 362.367188 207.832031 387.316406 214.507812 C 405.214844 219.257812 429.332031 220.257812 429.332031 220.257812 L 429.332031 152.058594 C 420.882812 152.976562 403.726562 150.308594 386.160156 141.550781 Z M 386.160156 141.550781"></path>
-</svg></a><a href="https://www.instagram.com/zavier.sosa/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;border:0;width:36px;height:36px;padding:0;margin:3px;color:#11CBE9;"><svg class="niftybutton-instagram" style="display:block;fill:currentColor" data-donate="true" data-tag="ins" data-name="Instagram" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><title>Instagram social icon</title>
-    <path d="M256 109.3c47.8 0 53.4 0.2 72.3 1 17.4 0.8 26.9 3.7 33.2 6.2 8.4 3.2 14.3 7.1 20.6 13.4 6.3 6.3 10.1 12.2 13.4 20.6 2.5 6.3 5.4 15.8 6.2 33.2 0.9 18.9 1 24.5 1 72.3s-0.2 53.4-1 72.3c-0.8 17.4-3.7 26.9-6.2 33.2 -3.2 8.4-7.1 14.3-13.4 20.6 -6.3 6.3-12.2 10.1-20.6 13.4 -6.3 2.5-15.8 5.4-33.2 6.2 -18.9 0.9-24.5 1-72.3 1s-53.4-0.2-72.3-1c-17.4-0.8-26.9-3.7-33.2-6.2 -8.4-3.2-14.3-7.1-20.6-13.4 -6.3-6.3-10.1-12.2-13.4-20.6 -2.5-6.3-5.4-15.8-6.2-33.2 -0.9-18.9-1-24.5-1-72.3s0.2-53.4 1-72.3c0.8-17.4 3.7-26.9 6.2-33.2 3.2-8.4 7.1-14.3 13.4-20.6 6.3-6.3 12.2-10.1 20.6-13.4 6.3-2.5 15.8-5.4 33.2-6.2C202.6 109.5 208.2 109.3 256 109.3M256 77.1c-48.6 0-54.7 0.2-73.8 1.1 -19 0.9-32.1 3.9-43.4 8.3 -11.8 4.6-21.7 10.7-31.7 20.6 -9.9 9.9-16.1 19.9-20.6 31.7 -4.4 11.4-7.4 24.4-8.3 43.4 -0.9 19.1-1.1 25.2-1.1 73.8 0 48.6 0.2 54.7 1.1 73.8 0.9 19 3.9 32.1 8.3 43.4 4.6 11.8 10.7 21.7 20.6 31.7 9.9 9.9 19.9 16.1 31.7 20.6 11.4 4.4 24.4 7.4 43.4 8.3 19.1 0.9 25.2 1.1 73.8 1.1s54.7-0.2 73.8-1.1c19-0.9 32.1-3.9 43.4-8.3 11.8-4.6 21.7-10.7 31.7-20.6 9.9-9.9 16.1-19.9 20.6-31.7 4.4-11.4 7.4-24.4 8.3-43.4 0.9-19.1 1.1-25.2 1.1-73.8s-0.2-54.7-1.1-73.8c-0.9-19-3.9-32.1-8.3-43.4 -4.6-11.8-10.7-21.7-20.6-31.7 -9.9-9.9-19.9-16.1-31.7-20.6 -11.4-4.4-24.4-7.4-43.4-8.3C310.7 77.3 304.6 77.1 256 77.1L256 77.1z"></path>
-    <path d="M256 164.1c-50.7 0-91.9 41.1-91.9 91.9s41.1 91.9 91.9 91.9 91.9-41.1 91.9-91.9S306.7 164.1 256 164.1zM256 315.6c-32.9 0-59.6-26.7-59.6-59.6s26.7-59.6 59.6-59.6 59.6 26.7 59.6 59.6S288.9 315.6 256 315.6z"></path>
-    <circle cx="351.5" cy="160.5" r="21.5"></circle>
-</svg></a><a href="https://www.linkedin.com/in/zaviersosa/" target="_blank" rel="noopener noreferrer" style="text-decoration:none;border:0;width:36px;height:36px;padding:0;margin:3px;color:#11CBE9;"><svg class="niftybutton-linkedin" style="display:block;fill:currentColor" data-donate="true" data-tag="lin" data-name="LinkedIn" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><title>LinkedIn social icon</title>
-    <path d="M186.4 142.4c0 19-15.3 34.5-34.2 34.5 -18.9 0-34.2-15.4-34.2-34.5 0-19 15.3-34.5 34.2-34.5C171.1 107.9 186.4 123.4 186.4 142.4zM181.4 201.3h-57.8V388.1h57.8V201.3zM273.8 201.3h-55.4V388.1h55.4c0 0 0-69.3 0-98 0-26.3 12.1-41.9 35.2-41.9 21.3 0 31.5 15 31.5 41.9 0 26.9 0 98 0 98h57.5c0 0 0-68.2 0-118.3 0-50-28.3-74.2-68-74.2 -39.6 0-56.3 30.9-56.3 30.9v-25.2H273.8z"></path>
-</svg></a><a href="mailto:zaviersosa@outlook.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;border:0;width:36px;height:36px;padding:0;margin:3px;color:#11CBE9;"><svg class="niftybutton-email" style="display:block;fill:currentColor" data-donate="true" data-tag="ema" data-name="Email" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><title>Email icon</title>
-    <path d="M101.3 141.6v228.9h0.3 308.4 0.8V141.6H101.3zM375.7 167.8l-119.7 91.5 -119.6-91.5H375.7zM127.6 194.1l64.1 49.1 -64.1 64.1V194.1zM127.8 344.2l84.9-84.9 43.2 33.1 43-32.9 84.7 84.7L127.8 344.2 127.8 344.2zM384.4 307.8l-64.4-64.4 64.4-49.3V307.8z"></path>
-
-</svg></a><a href="https://vimeo.com/zaviersosa" target="_blank" rel="noopener noreferrer" style="text-decoration:none;border:0;width:36px;height:36px;padding:0;margin:3px;color:#11CBE9;"><svg class="niftybutton-vimeo" style="display:block;fill:currentColor" data-donate="true" data-tag="vim" data-name="Vimeo" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><title>Vimeo social icon</title>
-    <path d="M420.1 197.9c-1.5 33.6-25 79.5-70.3 137.8 -46.9 60.9-86.5 91.4-118.9 91.4 -20.1 0-37.1-18.5-51-55.6 -9.3-34-18.5-68-27.8-102 -10.3-37.1-21.4-55.7-33.2-55.7 -2.6 0-11.6 5.4-27 16.2L75.7 209.1c17-14.9 33.8-29.9 50.3-44.9 22.7-19.6 39.7-29.9 51.1-31 26.8-2.6 43.3 15.8 49.5 55 6.7 42.4 11.3 68.7 13.9 79 7.7 35.1 16.2 52.7 25.5 52.7 7.2 0 18-11.4 32.5-34.2 14.4-22.8 22.2-40.1 23.2-52.1 2.1-19.7-5.7-29.5-23.2-29.5 -8.3 0-16.8 1.9-25.5 5.7 16.9-55.5 49.3-82.4 97.1-80.9C405.5 130 422.2 153 420.1 197.9z"></path>
-</svg></a></div>
-        </section>
+      <!-- Resume Section -->
+<section id="resume" class="section" style="display: none;">
+    <div class="contact-container">
+      <h2>Resume</h2>
+    
+      <!-- Resume Content -->
+      <div class="resume-content">
+        <div class="resume-item">
+          <div class="label">Education</div>
+          <hr class="divider">
+          <div class="value">
+            <strong>Sept 2018 – Dec 2021</strong><br>
+            Alfred State College, Alfred, NY<br>
+            Bachelor’s Degree in Digital Media & Animation
+          </div>
+        </div>
+        <div class="resume-item">
+          <div class="label">Academic Awards & Leadership</div>
+          <div class="value">
+            <ul>
+              <li>Norman McConney Jr Award for Academic Excellence</li>
+              <li>Chi Alpha Epsilon Honor Society</li>
+              <li>Alfred State College Honor Society</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resume-item">
+          <div class="label">Experience</div>
+          <hr class="divider">
+          <div class="value">
+            <strong>Freelance 3D Artist</strong><br>
+            Sosa Sculptworks | New York, NY | Mar 2024 – Present<br>
+            <ul>
+              <li>Specialized in translating 2D concepts into 3D models, maintaining high fidelity to client visions.</li>
+              <li>Applied organizational techniques to manage multiple projects and client relationships effectively.</li>
+              <li>Used software such as Blender, Unity, and Substance Painter for modeling, texturing, and rendering.</li>
+            </ul>
+            
+            <strong>Community Volunteer</strong><br>
+            LTD WORKS Food Pantry | New York, NY | July 2024 – Present<br>
+            <ul>
+              <li>Assisted in distributing food and essential supplies to individuals and families in need.</li>
+              <li>Communicated effectively with Spanish-speaking clients to ensure they received necessary assistance.</li>
+              <li>Helped maintain a clean, organized pantry environment while fostering a welcoming atmosphere.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="resume-item">
+          <div class="label">Skills</div>
+          <hr class="divider">
+          <div class="value">
+            <strong>Technical Skills:</strong><br>
+            Blender, Unity, Substance Painter, Photoshop, Microsoft Office Suite, Point-of-Sale (POS) Systems, Inventory Management
+            <br><br>
+            <strong>Soft Skills:</strong><br>
+            Communication, Time Management, Problem Solving, Team Collaboration, Customer Service, Conflict Resolution, Multitasking
+          </div>
+        </div>
+      </div>
     </div>
-    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('zvrsosa', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Support me',
-    'floating-chat.donateButton.background-color': '#ffffff',
-    'floating-chat.donateButton.text-color': '#323842'
-  });
-</script>
-    <footer>
-        <p>&copy; 2024 Zavier Sosa. All rights reserved.</p>
-    </footer>
+  </section>
+  
+
+      <!-- Contact Section -->
+      <section id="contact" class="section" style="display: none;">
+        <h2>Contact</h2>
+        <p>Available for work</p>
+        <section id="contact">
+            <div class="contact-container">
+              <table class="contact-table">
+                <tr>
+                  <td class="label">Available Now</td>
+                  <td class="value">Yes</td>
+                </tr>
+                <tr>
+                  <td class="label">Location</td>
+                  <td class="value">New York, NY</td>
+                </tr>
+                <tr>
+                  <td class="label">Email</td>
+                  <td class="value"><a href="mailto:zaviersosa@outlook.com">zaviersosa@outlook.com</a></td>
+                </tr>
+                <tr>
+                  <td class="label">Social Media</td>
+                  <td class="value">
+                    <a href="https://twitter.com" target="_blank">Twitter</a>, 
+                    <a href="https://vimeo.com" target="_blank">Vimeo</a>, 
+                    <a href="https://tiktok.com" target="_blank">TikTok</a>, 
+                    <a href="https://artstation.com" target="_blank">ArtStation</a>, 
+                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>, 
+                    <a href="https://discord.com" target="_blank">Discord</a>, 
+                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </section>
+          
+      </section>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
