@@ -3,6 +3,100 @@ body {
   display: flex;
 }
 
+.content-header {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 900; /* Heaviest weight */
+  font-size: 36px; /* Font size */
+}
+
+/* The line under the header */
+.animated-line {
+  width: 100%; /* Full width of container */
+  height: 4px; /* Line thickness */
+  background-color: #ffc353; /* Line color */
+  margin: 0 auto; /* Center the line */
+  transform: scaleX(0); /* Starts with no width */
+  transform-origin: left; /* Start the animation from the left */
+  animation: lineExpand 1s ease-out forwards; /* Run the animation on page load */
+}
+
+/* Keyframes to animate the line from left to right */
+@keyframes lineExpand {
+  0% {
+    transform: scaleX(0); /* Line starts at 0 width */
+  }
+  100% {
+    transform: scaleX(1); /* Line expands to full width */
+  }
+}
+
+/* Circle style for logo */
+.logo-icon {
+  width: 100px; /* Circle size */
+  height: 100px;
+  border-radius: 50%; /* Makes the div circular */
+  overflow: hidden; /* Ensures the image stays within the circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000; /* Border around the circle */
+  background-color: #f0f0f0; /* Fallback background color */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  margin: 20px auto; /* Centers the circle horizontally */
+  pointer-events: auto; /* Ensure the hover event is triggered */
+  z-index: 10; /* Bring the logo on top of other elements */
+}
+
+/* Image inside the logo icon */
+.logo-icon img {
+  width: 100%; /* Fills the circle */
+  height: 100%;
+  object-fit: cover; /* Keeps the image's aspect ratio */
+}
+
+/* Hover effect for the logo */
+.logo-icon:hover {
+  transform: scale(1.1); /* Enlarges the circle slightly */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
+}
+
+/* Social Media Links container */
+.social-media-links {
+  display: flex; /* Aligns the icons in a row */
+  justify-content: center; /* Centers the icons horizontally */
+  gap: 10px; /* Adds small spacing between the icons */
+  margin-top: 20px; /* Adds space above the icons */
+  pointer-events: auto; /* Ensure hover for social links is enabled */
+  z-index: 5; /* Ensures social links are below the logo */
+}
+
+/* Each social media link */
+.social-link {
+  display: block;
+  width: 30px; /* Set width of the icon */
+  height: 30px; /* Set height of the icon */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ensure smooth transition for hover */
+  display: inline-block; /* To keep elements inline and responsive */
+  pointer-events: auto; /* Enable hover interaction */
+}
+
+/* Social Media Icons */
+.social-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image fits within the container */
+  border-radius: 50%; /* Makes the icon round */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for social media links */
+.social-link:hover .social-icon {
+  transform: scale(1.1); /* Slightly enlarges the icon */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increases shadow effect */
+}
+
+
 .sidebar {
   min-width: 250px;
   max-width: 250px;
@@ -13,7 +107,7 @@ body {
 }
 
 .sidebar a {
-  color: #adb5bd;
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -36,7 +130,6 @@ body {
       margin-left: 0;
   }
 }
-
 
 #main-content {
   opacity: 0;
@@ -125,68 +218,21 @@ body {
   margin: 10px 0;
 }
 
+.nav-link {
+  font-family: 'Public Sans', sans-serif;
+  font-weight: 700; /* Bold weight */
+}
+
 .modal-content .nav-link:hover {
   color: #adb5bd;
 }
 
-/* Gallery container */
-.gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin: 20px;
+/*resume*/
+.resume-content {
+  margin-top: 50px;
 }
 
-.gallery-item {
-  position: relative;
-  height: 250px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 8px;
-  transition: transform 0.3s, opacity 0.3s ease;
-}
-
-.gallery-item .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
-  color: white;
-  font-size: 24px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.gallery-item:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-.gallery-item:hover .overlay {
-  opacity: 1;
-}
-
-/* Hover effect for the container */
-.gallery-item:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
-}
-
-.gallery-item h4 {
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
-}
-
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-  .gallery {
-    flex-direction: column;
-  }
+/*contact*/
+contact {
+  margin-top: 30px;
 }
