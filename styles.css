@@ -233,6 +233,86 @@ body {
 }
 
 /*contact*/
-contact {
-  margin-top: 30px;
+#contact {
+  margin-top: 50px;
+}
+
+/* Container for the categories */
+.categories {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Style for each category button */
+.categorybtn {
+  border-radius: 30px;
+  background-image: url('images/placeholder.webp');
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  position: relative;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Dim effect using pseudo-element */
+.categorybtn::after {
+  border-radius: 30px;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3); /* Dim background */
+  transition: background-color 0.3s ease;
+  z-index: 0;
+}
+
+/* Hover effects */
+.categorybtn:hover {
+  transform: scale(1.01);
+}
+
+.categorybtn:hover::after {
+  background-color: rgba(0, 0, 0, 0.5); /* Darker dim on hover */
+}
+
+/* Ensure the text stays on top of the dim effect */
+.categorybtn span {
+  z-index: 1; /* Keep the text above the dim effect */
+}
+
+/* Thumbnail hover animation */
+.thumbnail {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.thumbnail:hover img {
+  transform: scale(1.1); /* Enlarge image on hover */
+}
+
+.thumbnail:hover {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
+  transform: translateY(-5px); /* Slight lift effect */
 }
