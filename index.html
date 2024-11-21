@@ -1,165 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zavier's Portfolio</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <img src="images/placeholder.webp" alt="Logo" class="logo">
-      
-        <!-- Desktop Menu -->
-        <div class="desktop-menu">
-          <nav class="menu">
-            <a href="#" id="portfolio-link">Portfolio</a>
-            <a href="#" id="resume-link">Resume</a>
-            <a href="#" id="contact-link">Contact</a>
-          </nav>
-        </div>
-      
-        <!-- Mobile Menu -->
-        <div class="mobile-menu">
-          <button class="hamburger" id="hamburger-btn">
-            ☰
-          </button>
-          <div class="mobile-dropdown" id="mobile-dropdown" style="display: none;">
-            <a href="#" id="mobile-portfolio-link">Portfolio</a>
-            <a href="#" id="mobile-resume-link">Resume</a>
-            <a href="#" id="mobile-contact-link">Contact</a>
-          </div>
-        </div>
-          <!-- Copyright (Desktop only) -->
-        <div class="copyright"><p>&copy; Zavier Sosa</p></div>
-        <div class="socialmedia" id="socialmediaBtn">
-            
-        </div>
-      </div>      
+    <!-- Sidebar (hidden on mobile) -->
+    <div class="sidebar d-none d-md-flex flex-column p-3">
+        <h1 class="text-center">ZS</h1>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="portfolio.html" class="nav-link" data-page="portfolio">Portfolio</a>
+            </li>
+            <li>
+                <a href="resume.html" class="nav-link" data-page="resume">Resume</a>
+            </li>
+            <li>
+                <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+            </li>
+        </ul>
+        <hr>
+        <footer class="text-center mt-auto">
+            <small>&copy; Zavier Sosa 2024</small>
+        </footer>
+    </div>
 
-    <!-- Main Content -->
+    <!-- Mobile Hamburger Menu -->
+    <button class="hamburger-menu d-md-none" id="hamburger-btn" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Modal Navigation -->
+    <div class="modal-nav" id="modal-nav">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a href="portfolio.html" class="nav-link" data-page="portfolio">Portfolio</a>
+                </li>
+                <li>
+                    <a href="resume.html" class="nav-link" data-page="resume">Resume</a>
+                </li>
+                <li>
+                    <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Content -->
     <div class="content">
-      <!-- Portfolio Section -->
-      <section id="portfolio" class="section" style="display: none;">
-        <h2>Portfolio</h2>
-        <div class="gallery">
-          <div class="gallery-box" id="3d-models">
-            <h3>3D Models</h3>
-          </div>
-          <div class="gallery-box" id="enviroment-designs">
-            <h3>Environment Designs</h3>
-          </div>
-          <div class="gallery-box" id="illustrations">
-            <h3>Illustrations</h3>
-          </div>
+        <div id="main-content">
+            <h1>Welcome</h1>
+            <p>Click a link on the sidebar or hamburger menu to load content dynamically!</p>
         </div>
-        <div id="portfolio-content">
-        </div>
-      </section>
-
-      <!-- Resume Section -->
-<section id="resume" class="section" style="display: none;">
-    <div class="contact-container">
-      <h2>Resume</h2>
-    
-      <!-- Resume Content -->
-      <div class="resume-content">
-        <div class="resume-item">
-          <div class="label">Education</div>
-          <hr class="divider">
-          <div class="value">
-            <strong>Sept 2018 – Dec 2021</strong><br>
-            Alfred State College, Alfred, NY<br>
-            Bachelor’s Degree in Digital Media & Animation
-          </div>
-        </div>
-        <div class="resume-item">
-          <div class="label">Academic Awards & Leadership</div>
-          <div class="value">
-            <ul>
-              <li>Norman McConney Jr Award for Academic Excellence</li>
-              <li>Chi Alpha Epsilon Honor Society</li>
-              <li>Alfred State College Honor Society</li>
-            </ul>
-          </div>
-        </div>
-        <div class="resume-item">
-          <div class="label">Experience</div>
-          <hr class="divider">
-          <div class="value">
-            <strong>Freelance 3D Artist</strong><br>
-            Sosa Sculptworks | New York, NY | Mar 2024 – Present<br>
-            <ul>
-              <li>Specialized in translating 2D concepts into 3D models, maintaining high fidelity to client visions.</li>
-              <li>Applied organizational techniques to manage multiple projects and client relationships effectively.</li>
-              <li>Used software such as Blender, Unity, and Substance Painter for modeling, texturing, and rendering.</li>
-            </ul>
-            
-            <strong>Community Volunteer</strong><br>
-            LTD WORKS Food Pantry | New York, NY | July 2024 – Present<br>
-            <ul>
-              <li>Assisted in distributing food and essential supplies to individuals and families in need.</li>
-              <li>Communicated effectively with Spanish-speaking clients to ensure they received necessary assistance.</li>
-              <li>Helped maintain a clean, organized pantry environment while fostering a welcoming atmosphere.</li>
-            </ul>
-          </div>
-        </div>
-        <div class="resume-item">
-          <div class="label">Skills</div>
-          <hr class="divider">
-          <div class="value">
-            <strong>Technical Skills:</strong><br>
-            Blender, Unity, Substance Painter, Photoshop, Microsoft Office Suite, Point-of-Sale (POS) Systems, Inventory Management
-            <br><br>
-            <strong>Soft Skills:</strong><br>
-            Communication, Time Management, Problem Solving, Team Collaboration, Customer Service, Conflict Resolution, Multitasking
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
-  
 
-      <!-- Contact Section -->
-      <section id="contact" class="section" style="display: none;">
-        <h2>Contact</h2>
-        <p>Available for work</p>
-        <section id="contact">
-            <div class="contact-container">
-              <table class="contact-table">
-                <tr>
-                  <td class="label">Available Now</td>
-                  <td class="value">Yes</td>
-                </tr>
-                <tr>
-                  <td class="label">Location</td>
-                  <td class="value">New York, NY</td>
-                </tr>
-                <tr>
-                  <td class="label">Email</td>
-                  <td class="value"><a href="mailto:zaviersosa@outlook.com">zaviersosa@outlook.com</a></td>
-                </tr>
-                <tr>
-                  <td class="label">Social Media</td>
-                  <td class="value">
-                    <a href="https://twitter.com" target="_blank">Twitter</a>, 
-                    <a href="https://vimeo.com" target="_blank">Vimeo</a>, 
-                    <a href="https://tiktok.com" target="_blank">TikTok</a>, 
-                    <a href="https://artstation.com" target="_blank">ArtStation</a>, 
-                    <a href="https://linkedin.com" target="_blank">LinkedIn</a>, 
-                    <a href="https://discord.com" target="_blank">Discord</a>, 
-                    <a href="https://instagram.com" target="_blank">Instagram</a>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </section>
-          
-      </section>
-    </div>
-  </div>
-  <script src="script.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
 </body>
 </html>
