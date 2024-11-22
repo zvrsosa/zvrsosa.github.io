@@ -13,11 +13,12 @@ body {
 .animated-line {
   width: 100%; /* Full width of container */
   height: 4px; /* Line thickness */
-  background-color: #ffc353; /* Line color */
+  background-color: #00aeff; /* Line color */
   margin: 0 auto; /* Center the line */
   transform: scaleX(0); /* Starts with no width */
   transform-origin: left; /* Start the animation from the left */
-  animation: lineExpand 1s ease-out forwards; /* Run the animation on page load */
+  opacity: 0; /* Line is initially invisible */
+  animation: lineExpand 1s ease-out forwards, fadeIn 2s ease-out forwards; /* Add opacity animation */
 }
 
 /* Keyframes to animate the line from left to right */
@@ -29,6 +30,17 @@ body {
     transform: scaleX(1); /* Line expands to full width */
   }
 }
+
+/* Keyframes to animate opacity */
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Line is invisible */
+  }
+  100% {
+    opacity: 1; /* Line becomes visible */
+  }
+}
+
 
 /* Circle style for logo */
 .logo-icon {
@@ -73,8 +85,8 @@ body {
 /* Each social media link */
 .social-link {
   display: block;
-  width: 30px; /* Set width of the icon */
-  height: 30px; /* Set height of the icon */
+  width: 50px; /* Set width of the icon */
+  height: 50px; /* Set height of the icon */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ensure smooth transition for hover */
   display: inline-block; /* To keep elements inline and responsive */
   pointer-events: auto; /* Enable hover interaction */
@@ -112,7 +124,7 @@ body {
 }
 
 .sidebar a:hover {
-  color: #fff;
+  color: #ffc3f0;
 }
 
 .content {
@@ -138,6 +150,17 @@ body {
 }
 
 #main-content.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#category-div {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#category-div.show {
   opacity: 1;
   transform: translateY(0);
 }
@@ -238,20 +261,24 @@ body {
 }
 
 /* Container for the categories */
-.categories {
+categories {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* Style for each category button */
+.ctglabels {
+
+}
+
+/* Style for category buttons */
 .categorybtn {
-  border-radius: 30px;
-  background-image: url('images/placeholder.webp');
   background-size: cover;
   background-position: center;
-  height: 150px;
+  height: 200px;
+  width: 90%; /* Adjust the width here, e.g., 90% of the container */
+  max-width: 1500px; /* Optional: Set a max width for consistency */
   color: white;
   display: flex;
   align-items: center;
@@ -261,37 +288,41 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   border: none;
+  border-radius: 12px; /* Rounded edges */
   position: relative;
   transition: transform 0.3s ease, background-color 0.3s ease;
+  margin: 50px auto 10px; /* 50px top margin, auto centers horizontally */
+  overflow: hidden; /* Ensures content stays within the rounded edges */
+  box-shadow: 0px 4px 6px rgba(109, 131, 255, 0.2); /* Optional: subtle shadow for depth */
 }
 
-/* Dim effect using pseudo-element */
-.categorybtn::after {
-  border-radius: 30px;
-  content: '';
-  position: absolute;
+/* Responsive image inside category button */
+.categorybtn img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; /* Ensures the image fills the button nicely */
+  border-radius: 12px; /* Match rounded edges of the button */
+  position: absolute; /* Ensure it doesn't interfere with text */
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3); /* Dim background */
-  transition: background-color 0.3s ease;
-  z-index: 0;
+  z-index: 0; /* Image behind text */
 }
 
-/* Hover effects */
-.categorybtn:hover {
-  transform: scale(1.01);
-}
-
-.categorybtn:hover::after {
-  background-color: rgba(0, 0, 0, 0.5); /* Darker dim on hover */
-}
-
-/* Ensure the text stays on top of the dim effect */
+/* Text styling for the button content */
 .categorybtn span {
-  z-index: 1; /* Keep the text above the dim effect */
+  z-index: 1; /* Keep the text above the image */
+  position: relative;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Slight shadow for readability */
+  color: white; /* Ensure text color contrasts well with the background */
 }
+
+/* Hover effect */
+.categorybtn:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: darken background on hover */
+}
+
+
 
 /* Thumbnail hover animation */
 .thumbnail {

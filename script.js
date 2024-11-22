@@ -16,37 +16,68 @@ $(document).ready(function () {
         modalNav.removeClass('active');
     });
 
-    // Dynamic Content Loading (with smooth transition)
+    var initialLoad = true;
+    $(document).ready(function () {
+        // Load Portfolio by default
+        if (initialLoad){
+            loadContent('menu/portfolio');
+        }
+        initialLoad = false;
+    });
+
+    // Function to dynamically load content into #main-content
     function loadContent(page) {
-        // Hide current content and prepare for new content
         $('#main-content').removeClass('show');
-        setTimeout(() => {
+
+        setTimeout(function () {
             $.get(`${page}.html`, function (data) {
-                $('#main-content').html(data); // Inject new content
-                $('#main-content').addClass('show'); // Show content with animation
+                $('#main-content').html(data);
+                $('#main-content').addClass('show');
 
-                // Ensure hover is triggered by forcing reflow/repaint
-                forceHoverStyles();
+                // Initialize nested dynamic loading within the newly loaded content
+                initNestedLoader();
+            }).fail(function () {
+                $('#main-content').html('<p>Error loading content. Please try again later.</p>');
             });
-        }, 500); // Allow time for the current content to fade
+        }, 500);
     }
 
-    // Force hover styles to be applied after content load
-    function forceHoverStyles() {
-        // Trigger a reflow to ensure hover styles are applied
-        $('#main-content').get(0).offsetHeight; // This forces the browser to reflow/repaint the elements
+    // Sidebar click listener for main content loading
+    $('.nav-link').on('click', function (e) {
+        e.preventDefault();
+        const page = $(this).data('page');
+        loadContent(page);
+    });
 
-        // Optional: Re-add the hover class dynamically
-        $('.nav-link').addClass('ready-hover');
+    // Function to handle nested dynamic loading (second-level loader)
+    function initNestedLoader() {
+        $('.categorybtn').on('click', function (e) {
+            e.preventDefault();
+            const subPage = $(this).data('page'); // e.g., 3d_character_models.html
+
+            $('#category-div').removeClass('show');
+            $('#categories').hide();
+            setTimeout(function () {
+                $.get(`${subPage}.html`, function (data) {
+                    $('#category-div').html(data);
+                    $('#category-div').addClass('show');
+                }).fail(function () {
+                    $('#category-div').html('<p>Error loading subcontent.</p>');
+                });
+            }, 500);
+        });
     }
 
-    // Load Portfolio by default
-    loadContent('portfolio');
-
-    // Handle click events on navigation links
     $('.nav-link').on('click', function (event) {
         event.preventDefault();
         const page = $(this).data('page');
-        loadContent(page); // Load new page content
+        loadContent(page);
+    });
+
+    $('.categorybtn').on('click', function (event) {
+        event.preventDefault();
+        const page = $(this).data('page');
+        loadCategoryContent(page);
     });
 });
+
