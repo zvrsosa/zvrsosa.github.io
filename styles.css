@@ -1,349 +1,546 @@
-/* General Styles */
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@keyframes gradientMove {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* ================= BODY ================= */
 body {
-  display: flex;
+    font-family: "Inter", sans-serif;
+    overflow: hidden;
 }
 
-.content-header {
-  font-family: 'Public Sans', sans-serif;
-  font-weight: 900; /* Heaviest weight */
-  font-size: 36px; /* Font size */
+/* ================= BACKGROUND ================= */
+.bg {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, rgba(0,0,0,0.4), transparent 60%), radial-gradient(circle at bottom, rgba(0,0,0,0.7), transparent 70%), url("https://i.imgur.com/jKyfDAd.png") center/cover no-repeat;
+    filter: blur(18px) brightness(0.65);
+    transform: scale(1.1);
+    z-index: -1;
 }
 
-/* The line under the header */
-.animated-line {
-  width: 100%; /* Full width of container */
-  height: 4px; /* Line thickness */
-  background-color: #00aeff; /* Line color */
-  margin: 0 auto; /* Center the line */
-  transform: scaleX(0); /* Starts with no width */
-  transform-origin: left; /* Start the animation from the left */
-  opacity: 0; /* Line is initially invisible */
-  animation: lineExpand 1s ease-out forwards, fadeIn 2s ease-out forwards; /* Add opacity animation */
+/* ================= PAGE ================= */
+.page-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Keyframes to animate the line from left to right */
-@keyframes lineExpand {
-  0% {
-    transform: scaleX(0); /* Line starts at 0 width */
-  }
-  100% {
-    transform: scaleX(1); /* Line expands to full width */
-  }
+/* ================= GLASS ================= */
+.glass-container {
+    width: 600px;
+    max-height: 90vh;
+    padding: 40px;
+    background: rgba(20,20,20,0.35);
+    backdrop-filter: blur(28px);
+    border-radius: 25px;
+    margin: 20px;
+    overflow-y: auto;
+    position: relative;
 }
 
-/* Keyframes to animate opacity */
-@keyframes fadeIn {
-  0% {
-    opacity: 0; /* Line is invisible */
-  }
-  100% {
-    opacity: 1; /* Line becomes visible */
-  }
+    /* hide scrollbar */
+    .glass-container::-webkit-scrollbar {
+        width: 0;
+    }
+
+.glass-container {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* ================= SHARE BUTTON ================= */
+
+.copy-link {
+    filter: invert(1); /* keeps it white like your UI */
+    width: 16px;
+    height: 16px;
+}
+
+.share-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+    filter: invert(1); /* keeps it white like your UI */
+}
+
+    .share-btn img {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+    }
+
+    .share-btn:hover {
+        transform: scale(1.08);
+        background: rgba(255,255,255,0.2);
+    }
+
+/* ================= PROFILE ================= */
+.profile {
+    text-align: center;
+    margin-top: 35px;
+    margin-bottom: 18px; /* FIX: spacing */
+}
+
+.profile-icon {
+    width: 150px;
+    border-radius: 50%;
+}
+
+.profile-desc {
+    color: #ffffff; /* pure white */
+    opacity: 1; /* remove any fade */
+}
+
+.profile-name {
+    font-family: "Sora", sans-serif;
+    font-size: 40px;
+    font-weight: 800;
+    margin-top: 12px;
+    background: linear-gradient(90deg, hwb(196 44% 0%), hsl(320, 100%, 60%));
+    background-size: 200% 100%;
+    background-position: 0% 50%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 6s ease-in-out infinite;
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ================= LINKS ================= */
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 14px; /* FIX: consistent spacing */
+    margin: 18px 0; /* FIX: section spacing */
+}
+
+.link-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: transform 0.2s ease;
+    filter: brightness(0) invert(1);
+}
+
+    .link-row:hover {
+        transform: translateY(-1px);
+    }
+
+/* BUTTON */
+.link-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.08);
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .link-btn:visited {
+        color: white;
+    }
+
+    .link-btn:hover {
+        transform: translateY(-3px) scale(1.01);
+        background: rgba(255,255,255,0.14);
+        box-shadow: 0 14px 30px rgba(0,0,0,0.4);
+    }
+
+    .link-btn:active {
+        transform: scale(0.97);
+    }
+
+/* ICON */
+.link-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 0;
+}
+
+/* COPY BUTTON */
+.copy-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.10);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+    .copy-btn:hover {
+        background: rgba(255,255,255,0.18);
+        transform: scale(1.05);
+    }
+
+    .copy-btn:active {
+        transform: scale(0.9);
+    }
+
+/* ================= TOAST (UPGRADED - VISIBLE + PREMIUM) ================= */
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    z-index: 99999;
+    background: rgba(20,20,20,0.9);
+    backdrop-filter: blur(14px);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+    .toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+/* ================= CAROUSEL ================= */
+.carousel-wrapper {
+    margin: 22px 0; /* FIX spacing */
+    overflow: hidden;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide {
+    min-width: 100%;
+    text-align: center;
+    opacity: 0.6;
+    transform: scale(0.85);
+    transition: 0.6s ease;
+}
+
+    .slide.active {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    .slide img {
+        width: 90%;
+        border-radius: 15px;
+    }
+
+/* ================= DOTS ================= */
+.dots {
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .dots span {
+        width: 8px;
+        height: 8px;
+        display: inline-block;
+        background: white;
+        border-radius: 50%;
+        margin: 4px;
+        opacity: 0.4;
+        cursor: pointer;
+    }
+
+/* ================= TOS ================= */
+.tos-btn {
+    margin-top: 22px; /* FIX spacing */
+    width: 100%;
+    padding: 12px;
+    border-radius: 15px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ================= MODALS ================= */
+.modal,
+.tos-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(12px);
+    z-index: 999;
+}
+
+    .tos-modal.show {
+        display: flex;
+    }
+
+/* ================= TOS ================= */
+.tos-content {
+    width: 520px;
+    max-height: 80vh;
+    background: rgba(15,15,15,0.95);
+    backdrop-filter: blur(20px);
+    padding: 24px;
+    border-radius: 18px;
+    overflow-y: auto;
+    position: relative;
+    color: white;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+}
+
+    .tos-content::-webkit-scrollbar {
+        width: 0;
+    }
+
+.tos-content {
+    scrollbar-width: none;
+}
+
+.tos-title {
+    font-family: "Sora", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    background: linear-gradient(90deg, #ffffff, #bdbdbd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tos-body {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.tos-section {
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding-bottom: 10px;
+}
+
+    .tos-section h3 {
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .tos-section p {
+        font-size: 13px;
+        opacity: 0.65;
+        line-height: 1.5;
+    }
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+    .glass-container {
+        width: 100%;
+        height: 100vh;
+        max-height: 100vh;
+        margin: 0;
+        border-radius: 0;
+        padding: 18px;
+    }
+
+    .tos-content {
+        width: 92%;
+        max-height: 85vh;
+    }
+}
+
+/* ================= IMAGE MODAL ================= */
+
+.img-modal {
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(12px);
+    z-index: 1000;
+}
+
+    .img-modal.show {
+        display: flex;
+    }
+
+.img-content {
+    width: 520px;
+    max-height: 80vh;
+    background: rgba(15,15,15,0.95);
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.modal-img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: contain;
+}
+
+.modal-link {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.08);
+}
+
+    .modal-link:hover {
+        background: rgba(255,255,255,0.15);
+    }
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: white;
+    font-size: 28px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+    .nav-btn:hover {
+        background: rgba(255,255,255,0.2);
+    }
+
+    .nav-btn.left {
+        left: 10px;
+    }
+
+    .nav-btn.right {
+        right: 10px;
+    }
+
+.qr-float {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    width: 200px;
+    padding: 12px;
+    mix-blend-mode: multiply;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column; /* key change */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.qr-label {
+    font-size: 14px;
+    font-weight: 800;
+    color: #000;
+    text-align: center;
+    opacity: 0.8;
+}
+
+.qr-float img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.qr-float:hover {
+    transform: scale(1.05);
+}
+
+/* hide on mobile */
+@media (max-width: 768px) {
+    .qr-float {
+        display: none;
+    }
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.nav-btn.left {
+    left: 10px;
+}
+
+.nav-btn.right {
+    right: 10px;
 }
 
 
-/* Circle style for logo */
-.logo-icon {
-  width: 100px; /* Circle size */
-  height: 100px;
-  border-radius: 50%; /* Makes the div circular */
-  overflow: hidden; /* Ensures the image stays within the circle */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid #000; /* Border around the circle */
-  background-color: #f0f0f0; /* Fallback background color */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
-  margin: 20px auto; /* Centers the circle horizontally */
-  pointer-events: auto; /* Ensure the hover event is triggered */
-  z-index: 10; /* Bring the logo on top of other elements */
-}
-
-/* Image inside the logo icon */
-.logo-icon img {
-  width: 100%; /* Fills the circle */
-  height: 100%;
-  object-fit: cover; /* Keeps the image's aspect ratio */
-}
-
-/* Hover effect for the logo */
-.logo-icon:hover {
-  transform: scale(1.1); /* Enlarges the circle slightly */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
-}
-
-/* Social Media Links container */
-.social-media-links {
-  display: flex; /* Aligns the icons in a row */
-  justify-content: center; /* Centers the icons horizontally */
-  gap: 10px; /* Adds small spacing between the icons */
-  margin-top: 20px; /* Adds space above the icons */
-  pointer-events: auto; /* Ensure hover for social links is enabled */
-  z-index: 5; /* Ensures social links are below the logo */
-}
-
-/* Each social media link */
-.social-link {
-  display: block;
-  width: 50px; /* Set width of the icon */
-  height: 50px; /* Set height of the icon */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Ensure smooth transition for hover */
-  display: inline-block; /* To keep elements inline and responsive */
-  pointer-events: auto; /* Enable hover interaction */
-}
-
-/* Social Media Icons */
-.social-icon {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image fits within the container */
-  border-radius: 50%; /* Makes the icon round */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-}
-
-/* Hover effect for social media links */
-.social-link:hover .social-icon {
-  transform: scale(1.1); /* Slightly enlarges the icon */
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increases shadow effect */
-}
-
-
-.sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  background-color: #000000;
-  color: #fff;
-  height: 100vh;
-  position: fixed;
-}
-
-.sidebar a {
-  color: #ffffff;
-  text-decoration: none;
-}
-
-.sidebar a:hover {
-  color: #ffc3f0;
-}
-
-.content {
-  margin-left: 250px;
-  padding: 20px;
-  width: 100%;
-}
-
-/* Hide Sidebar on Mobile */
-@media (max-width: 767.98px) {
-  .sidebar {
-      display: none;
-  }
-  .content {
-      margin-left: 0;
-  }
-}
-
-#main-content {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-#main-content.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-#category-div {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-#category-div.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Hamburger Menu */
-.hamburger-menu {
-  position: fixed;
-  top: 20px;
-  right: 20px; /* Change from left to right */
-  z-index: 1050;
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 40px;
-  height: 30px;
-  padding: 0;
-}
-
-.hamburger-menu span {
-  display: block;
-  width: 100%;
-  height: 4px;
-  background-color: #343a40;
-  border-radius: 2px;
-  transition: all 0.3s;
-}
-
-.hamburger-menu.active span:nth-child(1) {
-  transform: rotate(45deg) translate(7px, 7px);
-}
-
-.hamburger-menu.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-menu.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Modal Navigation */
-.modal-nav {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1040;
-}
-
-.modal-nav.active {
-  display: block;
-}
-
-.modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  text-align: center;
-}
-
-.modal-content .nav-link {
-  font-size: 1.5rem;
-  color: #fff;
-  margin: 10px 0;
-}
-
-.nav-link {
-  font-family: 'Public Sans', sans-serif;
-  font-weight: 700; /* Bold weight */
-}
-
-.modal-content .nav-link:hover {
-  color: #adb5bd;
-}
-
-/*resume*/
-.resume-content {
-  margin-top: 50px;
-}
-
-/*contact*/
-#contact {
-  margin-top: 50px;
-}
-
-/* Container for the categories */
-categories {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.ctglabels {
-
-}
-
-/* Style for category buttons */
-.categorybtn {
-  background-size: cover;
-  background-position: center;
-  height: 200px;
-  width: 90%; /* Adjust the width here, e.g., 90% of the container */
-  max-width: 1500px; /* Optional: Set a max width for consistency */
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.25rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  text-decoration: none;
-  border: none;
-  border-radius: 12px; /* Rounded edges */
-  position: relative;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  margin: 50px auto 10px; /* 50px top margin, auto centers horizontally */
-  overflow: hidden; /* Ensures content stays within the rounded edges */
-  box-shadow: 0px 4px 6px rgba(109, 131, 255, 0.2); /* Optional: subtle shadow for depth */
-}
-
-/* Responsive image inside category button */
-.categorybtn img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover; /* Ensures the image fills the button nicely */
-  border-radius: 12px; /* Match rounded edges of the button */
-  position: absolute; /* Ensure it doesn't interfere with text */
-  top: 0;
-  left: 0;
-  z-index: 0; /* Image behind text */
-}
-
-/* Text styling for the button content */
-.categorybtn span {
-  z-index: 1; /* Keep the text above the image */
-  position: relative;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Slight shadow for readability */
-  color: white; /* Ensure text color contrasts well with the background */
-}
-
-/* Hover effect */
-.categorybtn:hover {
-  transform: scale(1.05); /* Slight zoom on hover */
-  background-color: rgba(0, 0, 0, 0.5); /* Optional: darken background on hover */
-}
-
-
-
-/* Thumbnail hover animation */
-.thumbnail {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.thumbnail:hover img {
-  transform: scale(1.1); /* Enlarge image on hover */
-}
-
-.thumbnail:hover {
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Shadow effect */
-  transform: translateY(-5px); /* Slight lift effect */
+/* background canvas inside glass */
+#triangles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    /* makes it feel embedded in glass volume */
+    opacity: 0.7;
+    /* smooth fade in/out inside container */
+    -webkit-mask-image: linear-gradient( to bottom, transparent 0%, black 15%, black 85%, transparent 100% );
+    mask-image: linear-gradient( to bottom, transparent 0%, black 15%, black 85%, transparent 100% );
 }
